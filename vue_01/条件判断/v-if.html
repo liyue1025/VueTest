@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>
+      {{ score }} , 
+      <span v-if="score >= 90">优秀</span>
+      <span v-else-if="score >= 80">良好</span>
+      <span v-else-if="score >= 70">一般</span>
+      <span v-else-if="score >= 60">及格</span>
+      <span v-else>不及格</span>
+    </h1>
+    <button @click="incre"> +5 </button>
+    <button @click="decre"> -5 </button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        score : 90
+      },
+      methods: {
+        incre() {
+          this.score += 5;
+        },
+        decre() {
+          this.score -= 5;
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

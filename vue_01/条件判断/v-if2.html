@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 
+    key : 做唯一标识，阻止虚拟dow复用组件
+   -->
+  <div id="app">
+    <span v-if="flag">
+      用户邮箱：<input type="text" key="k1"/>
+    </span>
+    <span v-if="!flag">
+      用户电话：<input type="text" key="k2"/>
+    </span>
+    <button @click="change">切换</button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        flag : true
+      },
+      methods: {
+        change() {
+          this.flag = !this.flag;
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

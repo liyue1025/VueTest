@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+
+  <script src="../../js/vue.js"></script>
+  <style>
+    .activit {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- class 绑定 -->
+    <h1 :class="getClasses()">{{ msg }}</h1>
+    <button v-on:click="btnClick">变色</button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: "hello",
+        isActivit: true
+      },
+      methods: {
+        btnClick: function () {
+          this.isActivit = !this.isActivit;
+        },
+        getClasses : function() {
+          return {activit : this.isActivit};
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

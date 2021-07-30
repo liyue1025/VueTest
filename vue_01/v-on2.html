@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+
+  <div id="app" @click="divClick">
+
+    <!-- .stop修饰符 : 阻止单击事件继续传播 -->
+    <button @click.stop="btnClick">按钮</button>
+
+    <!-- 提交事件不再重载页面 -->
+    <form action="#" @submit.prevent="submitClick">
+      <input type="submit" value="提交">
+    </form>
+
+    <!-- 监听键帽up事件 -->
+    <input type="text" @keyup="keyUp">
+
+    <!-- .once 只进行一次回调 -->
+    <button @click.once="btnClick">Once</button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: "hello",
+      },
+      methods: {
+        divClick() {
+          console.log('divClick');
+        },
+        btnClick() {
+          console.log('btnClick');
+        },
+        submitClick() {
+          console.log('submitClick');
+        },
+        keyUp() {
+          console.log('keyUp');
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

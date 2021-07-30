@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>总年龄： {{mount}}</h1>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        book : [
+          {name : "小明1", age : 18, skill : "Java"},
+          {name : "小明2", age : 19, skill : "Java"},
+          {name : "小明3", age : 20, skill : "Java"}
+        ]
+      },
+      computed : {
+        mount : function() {
+          let total = 0;
+          for (let i = 0; i < this.book.length; i++) {
+            total += this.book[i].age;
+          }
+          
+          return total;
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

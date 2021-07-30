@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <table>
+      <tr v-for="obj in arrs">
+        <td v-for="(value, key) in obj" key="(index) in obj">{{key}} : {{value}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        arrs : [
+          {name : 'AA', age : 1, addr : '北京'},
+          {name : 'BB', age : 2, addr : '南京'},
+          {name : 'CC', age : 3, addr : '西京'},
+          {name : 'WC', age : 4, addr : '厕所'}
+        ]
+      }
+    })
+  </script>
+
+</body>
+
+</html>

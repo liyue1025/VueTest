@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>{{ msg }}</h1>
+    <h1>{{count}}</h1>
+    <button v-on:click="incretment">+</button>
+    <!-- 语法糖 -->
+    <button @click="decrement">-</button> 
+
+    <!-- 
+      获取Event对象
+        1、不传参
+        2、$event
+     -->
+    <button @click="printEvent">Event</button>
+    <button @click="printEvent($event)">Event</button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: "hello",
+        count : 1
+      },
+      methods: {
+        incretment() {
+          this.count ++;
+        },
+        decrement() {
+          this.count --;
+        },
+        printEvent(event) {
+          console.log(event);
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

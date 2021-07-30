@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>{{ msg }}</h1>
+    <h1>{{ age }}</h1>
+    <h1>{{ msg + age }}</h1>
+    <h1>{{ name * 2 }}</h1>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        name: '小明',
+        age: '18',
+        msg: 'hello world',
+        count: 100
+      }
+    })
+  </script>
+
+</body>
+
+</html>

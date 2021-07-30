@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    
+    <img v-show="isShow" :style="{width : '80px', height : '80px'}" :src="imgURL" />
+    <button @click="isShow = !isShow">切换显示</button>
+
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        imgURL : "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-10-30%2F5bd7c30fdc922.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1630207371&t=4cfb423603b21041b8f79aced731c0ad",
+        isShow : true
+      }
+    })
+  </script>
+
+</body>
+
+</html>

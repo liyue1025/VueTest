@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+
+  <script src="../../js/vue.js"></script>
+  <style>
+    .activit { color: red; }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- class 绑定 -->
+    <h1 :class="sty">{{ msg }}</h1>
+
+    <!-- <h1 :class = "{ 类1 : bool, 类2 : bool ... }"></h1> -->
+    <h1 :class="{activit : isActivit}">Hello world</h1>
+    <h1 :class="{activit : false}">Hello world</h1>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: "hello",
+        sty : "activit",
+        isActivit : true
+      }
+    })
+  </script>
+
+</body>
+
+</html>
