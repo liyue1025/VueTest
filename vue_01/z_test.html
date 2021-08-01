@@ -7,24 +7,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>title</title>
   <script src="../js/vue.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
 </head>
 
 <body>
 
   <div id="app">
-    <ul>
-      <li v-for = "{item, index} in movies">{{ item }}</li>
-    </ul>
+    <table border="1">
+      <thead>
+        <th>书籍名称</th>
+        <th>出版日期</th> 
+        <th>价格</th>
+        <th>购买数量</th>
+        <th>总价</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+        <tr v-for="(book, index) in books">
+          <td>{{ book.name }}</td>
+          <td>{{ book.pubDate }}</td>
+          <td>{{ book.price }}</td>
+          <td>
+            <button @click="sub(index)">-</button>
+            {{ book.quantity }} 
+            <button @click="add(index)">+</button>
+          </td>
+          <td>{{ book.total }}</td>
+          <td @click="del(index)">移除</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        movies : [1, 2, 3, 4, 5]
+        books : [
+          {name : '算法导论', pubDate : '2006-09', price : 85, quantity : 0, total : 0},
+          {name : '编程珠玑', pubDate : '2008-10', price : 39, quantity : 0, total : 0},
+          {name : '代码大全', pubDate : '20066-3', price : 128, quantity : 0, total : 0}
+        ]
       },
-      method : {
-        
+      methods : {
+        add(index) {
+          this.books[index].quantity++;
+          this.books[index].total += this.books[index].price;
+        },
+        sub(index) {
+          this.books[index].quantity--;
+          this.books[index].total -= this.books[index].price;
+        },
+        del(index) {
+          this.books.splice(index, 1);
+        }
       }
     })
   </script>
