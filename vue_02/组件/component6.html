@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 组件数据 -->
+
+  <div id="app">
+    <cpn></cpn>
+  </div>
+
+  <!-- 
+    子组件不能直接访问父组件（Vue实例）中的数据，每个组件有属于自己的数据区域
+   -->
+  <template id="cpn">
+    <div>
+      <h2>{{ title }}</h2>
+    </div>
+  </template>
+
+  <script>
+
+    // 注册组件
+    Vue.component('cpn', {
+      template : '#cpn',
+      // 组件数据通过data函数返回（组件还可以有methods等，本质就是Vue实例）
+      data() {
+        return {
+          title : '我是标题'
+        }
+      },
+    })
+
+    const app = new Vue({
+      el : '#app'
+    })
+  </script>
+
+</body>
+
+</html>

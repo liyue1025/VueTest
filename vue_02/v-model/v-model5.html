@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- v-model与checkbox合用 -->
+
+  <div id="app">
+
+    <!-- <input type="checkbox" value="篮球" c>篮球
+    <input type="checkbox" value="足球" v-model="hobbies">足球
+    <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+    <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球 -->
+
+    <label v-for="item in originHobbies">
+      <input type="checkbox" :value="item" v-model="hobbies"> {{ item }}
+    </label>
+
+    <hr>
+
+    <ul>
+      <li v-for="item in hobbies">{{item}}</li>
+    </ul>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        hobbies : [],
+        originHobbies : ['篮球', '足球', '乒乓球', '羽毛球']
+      }
+    })
+  </script>
+
+</body>
+
+</html>

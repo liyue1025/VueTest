@@ -11,21 +11,23 @@
 
 <body>
 
+  <!-- v-model与checkbox合用 -->
+
   <div id="app">
-    <h1>{{ name }}</h1>
+    <label for="agree">
+      <input type="checkbox" id="agree" v-model="agree">男
+    </label>
+
+    <h1>{{agree}}</h1>
+
+    <button :disabled="!agree">下一步</button>
   </div>
 
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        firstName : "Li",
-        lastName : "Yue"
-      },
-      computed : {
-        name : function() {
-          return this.firstName + this.lastName;
-        }
+        agree : false
       }
     })
   </script>

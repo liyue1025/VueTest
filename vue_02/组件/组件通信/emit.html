@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 
+    子组件向父组件传递数据
+      $emit : 触发当前实例上的事件。附加参数都会传给监听器回调。
+   -->
+
+  <div id="app">
+    <!-- 3、自定义监听事假 -->
+    <cpn @itemclick="cpnClick"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <!-- 1、子组件中监听点击事件 -->
+      <button v-for="item in categories" @click="btnClick(item)">{{ item.name }}</button>
+    </div>
+  </template>
+
+  <script>
+
+
+    // root 组件
+    const app = new Vue({
+      el : '#app',
+      data : {
+        
+      },
+      methods: {
+        // 4、回调父组件方法
+        cpnClick(item) {
+          console.log(item);
+          
+        }
+      },
+      components : {
+        cpn : {
+          template : '#cpn',
+          data() {
+            return {
+              categories : [
+                {id : 1, name : "热门推荐"},
+                {id : 2, name : "电子产品"},
+                {id : 3, name : "小吃零食"}
+              ]
+            }
+          },
+          methods: {
+            btnClick(item) {
+              // 2、通过emit函数将事件传给监听器
+              this.$emit('itemclick', item);
+            }
+          }
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

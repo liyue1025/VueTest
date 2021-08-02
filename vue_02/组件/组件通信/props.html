@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 
+    父组件向子组件传递数据
+      props 可以是数组或对象，用于接收来自父组件的数据。
+      props 可以是简单的数组，或者使用对象作为替代，对象允许配置高级选项，如类型检测、自定义验证和设置默认值。
+   -->
+
+  <div id="app">
+    <cpn :cmovies="movies" :cmsg="msg"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      {{ cmovies }}
+      <br>
+      {{ cmsg }}
+    </div>
+  </template>
+
+  <script>
+
+
+    // root 组件
+    const app = new Vue({
+      el : '#app',
+      data : {
+        movies : [1, 2, 3, 4, 5],
+        msg : 100
+      },
+      components : {
+        cpn : {
+          template : '#cpn',
+          // props : ['cmovies']
+          props : {
+            cmovies : Array, 
+            cmsg : {
+              type : Number, // 类型限制
+              default : 100,  // 默认值
+              required : true, // 必须
+              validator(value) { // 将该 prop 的值作为唯一的参数代入，返回一个 falsy 的值 (也就是验证失败)，一个控制台警告将会被抛出。
+                return value < 0;
+              }
+            }
+          }
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

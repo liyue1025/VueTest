@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 父子组件的使用 -->
+
+  <div id="app">
+    <!-- 4、使用父组件  -->
+    <father></father>
+  </div>
+
+
+
+  <script>
+    // 1、创建父子组件
+    // 子组件
+    const sonC = Vue.extend({
+      template : `
+        <div>
+          <h1>儿子</h1>
+          <p>我是儿子</p>
+        </div>
+      `
+    });
+    // 父组件
+    const fatherC = Vue.extend({
+      template : `
+        <div>
+          <h1>爸爸</h1>
+          <p>我是你爹</p>
+          <!-- 3、在父组件中使用子组件！  -->
+          <son></son> 
+        </div>
+      `,
+      components : {
+        // 注册子组件
+        son : sonC
+      }
+    });
+
+  
+    const app = new Vue({
+      el : '#app',
+      components : {
+        // 2、注册组件
+        father : fatherC
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

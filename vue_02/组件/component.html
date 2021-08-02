@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 全局组件的使用 -->
+
+  <div id="app">
+    <!-- 3、使用组件 （必须在Vue实例中使用） -->
+    <my-cpn></my-cpn>
+  </div>
+
+  <div id="app2">
+    <my-cpn></my-cpn>
+  </div>
+
+  <script>
+    // 1、创建组件
+    const cpn = Vue.extend({
+      template: `
+                <div>
+                  <h1>标题组件</h1>
+                  <p>--------标题组件--------</p>
+                </div>`
+    })
+
+    // 2、注册组件（注册全局组件：在注册之后可以用在任何新创建的 Vue 根实例 (new Vue) 的模板中）
+    Vue.component('my-cpn', cpn)
+
+    const app = new Vue({
+      el : '#app'
+    })
+
+    const app2 = new Vue({
+      el : '#app2'
+    })
+  </script>
+
+</body>
+
+</html>

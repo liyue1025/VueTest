@@ -12,19 +12,25 @@
 <body>
 
   <div id="app">
-    <h1>{{ name }}</h1>
+    
+    <!-- v-model 双向绑定原理 -->
+    <input type="text" name="name" id="id" :value="msg" @input="changeInput">
+    <input type="text" name="name" id="id" :value="msg" @input="msg = $event.target.value">
+    
+    <h1>{{ msg }}</h1>
   </div>
 
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        firstName : "Li",
-        lastName : "Yue"
+        msg: "hello"
       },
-      computed : {
-        name : function() {
-          return this.firstName + this.lastName;
+      methods: {
+        changeInput(event) {
+          console.log(event);
+          
+          this.msg = event.target.value;
         }
       }
     })

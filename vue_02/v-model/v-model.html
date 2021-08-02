@@ -12,20 +12,18 @@
 <body>
 
   <div id="app">
-    <h1>{{ name }}</h1>
+    
+    <!-- v-model:在表单控件或者组件上创建双向绑定 -->
+    <input type="text" name="name" id="id" v-model="msg">
+    
+    <h1>{{ msg }}</h1>
   </div>
 
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        firstName : "Li",
-        lastName : "Yue"
-      },
-      computed : {
-        name : function() {
-          return this.firstName + this.lastName;
-        }
+        msg: "hello"
       }
     })
   </script>

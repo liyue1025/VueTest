@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 注册组件语法糖 -->
+
+  <div id="app">
+    <!-- 3、使用组件 -->
+    <cpn></cpn>
+    <cpn2></cpn2>
+  </div>
+
+  <script>
+    // 1、创建组件
+    // const cpn = Vue.extend({
+    //   template: `
+    //     <div>
+    //       <h1>标题组件</h1>
+    //       <p>--------标题组件--------</p>
+    //     </div>
+    //   `
+    // })
+
+    // 2、使用语法糖注册全局组件
+    Vue.component('cpn', {
+      template : `
+        <div>
+          <h1>标题组件</h1>
+          <p>--------标题组件--------</p>
+        </div>
+      `
+    })
+
+    const app = new Vue({
+      el : '#app',
+      components : {
+        // 2、使用语法糖注册局部组件
+        cpn2 : {
+          template : `
+            <div>
+              <h1>标题组件2</h1>
+              <p>--------标题组件2--------</p>
+            </div>
+          `
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

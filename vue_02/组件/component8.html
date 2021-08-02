@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 父组件通过 $children / $refs 访问子组件 -->
+
+  <div id="app">
+    <cpn ref="r1"></cpn>
+    <cpn ref="r2"></cpn>
+    <cpn ref="r3"></cpn>
+    <button @click="btnClick">按钮</button>
+  </div>
+
+  <template id="son">
+    <div>
+      <h1>我是子组件</h1>
+    </div>
+  </template>
+
+  <script>
+  
+    const app = new Vue({
+      el : '#app',
+      methods: {
+        btnClick() {
+          // this.$children
+          for (let c of this.$children) {
+            c.sonMethod();
+          }
+
+          // this.$refs (常用，推荐！！！)
+          this.$refs.r1.sonMethod();
+          this.$refs.r2.sonMethod();
+          this.$refs.r3.sonMethod();
+        }
+      },
+      components : {
+        cpn : {
+          template : "#son",
+          methods: {
+            sonMethod() {
+              console.log('sonMethod');
+            }
+          }
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>
