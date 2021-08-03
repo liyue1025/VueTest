@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- slot 的基本使用 (一个插槽) -->
+
+  <div id="app">
+
+    <!-- 2、使用插槽 -->
+    <cpn><span>插槽位置</span></cpn>
+
+    <!-- 默认值 -->
+    <cpn></cpn>
+
+    <!-- 只有一个slot而标签中有多个标签，会全部显示 -->
+    <cpn>
+      <h3>Hello</h3>
+      <h4>World</h4>
+      <h5>Vue</h5>
+    </cpn>
+
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>Template</h1>
+      <!-- 1、组件模板中使用slot -->
+      <slot>
+        <!-- slot 默认为一个按钮 -->
+        <button>slot默认按钮</button>
+      </slot>
+    </div>
+  </template>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: "hello"
+      },
+      components : {
+        cpn : {
+          template : '#cpn',
+
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- 作用域插槽：父组件替换插槽标签，但内容由子组件提供 -->
+
+  <div id="app">
+
+    <cpn></cpn>
+ 
+    <cpn>
+      <!-- 2、使用template模板，并使用slot-scope标签 -->
+      <template slot-scope="slot">
+        <span v-for="item in slot.data">{{item}} </span>
+      </template>
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>Template</h1>
+      <!-- 1、使用 :data 属性将子组件中数据传过去 -->
+      <slot :data="arr">
+        <ul>
+          <li v-for="item in arr">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: "hello"
+      },
+      components : {
+        cpn : {
+          template : '#cpn',
+            data () {
+              return {
+                arr : [1, 2, 3, 4, 5]
+              }
+            }
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
